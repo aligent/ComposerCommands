@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Composer Magento Installer
- */
-
 namespace Aligent\Composer\Magento\Command;
-
 use MagentoHackathon\Composer\Magento\Deploy\Manager\Entry;
 use MagentoHackathon\Composer\Magento\DeployManager;
 use MagentoHackathon\Composer\Magento\Event\EventManager;
@@ -15,11 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Composer\Downloader\VcsDownloader;
 use MagentoHackathon\Composer\Magento\Installer;
 
-/**
- * @author Tiago Ribeiro <tiago.ribeiro@seegno.com>
- * @author Rui Marinho <rui.marinho@seegno.com>
- */
-class CopyCommand extends \Composer\Command\Command
+class ManualDeployCommand extends \Composer\Command\Command
 {
     protected function configure()
     {
@@ -27,8 +18,7 @@ class CopyCommand extends \Composer\Command\Command
             ->setName('magento-module-deploy')
             ->setDescription('Deploy all Magento modules loaded via composer.json')
             ->setDefinition(array(
-                // we dont need to define verbose, because composer already defined it internal
-                //new InputOption('verbose', 'v', InputOption::VALUE_NONE, 'Show modified files for each directory that contains changes.'),
+                new InputOption('strategy', '-s', InputOption::VALUE_REQUIRED, 'Set Deploy Strategy (copy/ symlink)'),
             ))
             ->setHelp(<<<EOT
 This command deploys all magento Modules
@@ -85,7 +75,13 @@ EOT
                 $output->writeln("package {$package->getName()} recognized");
             }
 
+            // Set input strategy (overwrite composer.json)
+            if ($vStrategy = $input->getOption('strategy')) {
+                $moduleInstaller->setDeployStrategy($vStrategy);
+            }
+
             $strategy = $moduleInstaller->getDeployStrategy($package);
+
             if ($input->getOption('verbose')) {
                 $output->writeln("used " . get_class($strategy) . " as deploy strategy");
             }
