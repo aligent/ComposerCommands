@@ -1,0 +1,38 @@
+{
+  "name":"aligent/composer-magento-deploy",
+  "description":"Aligent comppser installer",
+  "keywords":[ "composer-installer", "magento"],
+  "minimum-stability":"stable",
+  "type":"composer-plugin",
+  "license":"OSL-3.0",
+  "homepage":"https://www.aligent.com.au",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.firegento.com"
+    }
+  ],
+  "authors":[
+    {
+      "name":"William Tran",
+      "email":"william@aligent.com.au"
+    }
+  ],
+  "require":{
+    "php": ">=5.3.2"
+  },
+  "require-dev":{
+    "composer/composer":"*@dev",
+    "magento-hackathon/composer-command-integrator":"*"
+  },
+  "suggest":{
+  },
+  "autoload":{
+    "psr-0":{
+      "Aligent\\Composer\\Magento":"src/"
+    }
+  },
+  "extra":{
+    "composer-command-registry": [ "Aligent\\Composer\\Magento\\Command\\CopyCommand" ]
+  }
+}
