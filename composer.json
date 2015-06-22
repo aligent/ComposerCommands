@@ -1,11 +1,10 @@
 {
   "name":"aligent/composer-magento-deploy",
-  "description":"Provide command for manual magento module deployment",
-  "keywords":[ "composer-installer", "magento"],
-  "minimum-stability":"stable",
   "type":"library",
+  "description":"Provide command for manual magento module deployment",
+  "keywords":["composer-installer", "magento"],
   "license":"OSL-3.0",
-  "homepage":"https://www.aligent.com.au",
+  "homepage":"http://www.aligent.com.au",
   "repositories": [
     {
       "type": "composer",
@@ -23,12 +22,10 @@
     "composer/composer":"*@dev",
     "magento-hackathon/composer-command-integrator":"*"
   },
-  "autoload":{
-    "psr-0":{
-      "Aligent\\Composer\\Magento":"src/"
-    }
+  "autoload": {
+    "psr-0": {"Aligent\\Composer\\Magento":"src/"}
   },
-  "extra":{
-    "composer-command-registry": [ "Aligent\\Composer\\Magento\\Command\\ManualDeployCommand" ]
+  "extra": {
+    "composer-command-registry": "Aligent\\Composer\\Magento\\Command\\ManualDeployCommand"
   }
 }
