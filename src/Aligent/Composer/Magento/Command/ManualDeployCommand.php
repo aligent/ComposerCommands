@@ -15,7 +15,7 @@ class ManualDeployCommand extends \Composer\Command\Command
     protected function configure()
     {
         $this
-            ->setName('magento-module-deploy')
+            ->setName('magento-manual-deploy')
             ->setDescription('Deploy all Magento modules loaded via composer.json')
             ->setDefinition(array(
                 new InputOption('strategy', '-s', InputOption::VALUE_REQUIRED, 'Set Deploy Strategy (copy/ symlink)'),
