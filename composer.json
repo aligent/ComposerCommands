@@ -26,6 +26,6 @@
     "psr-0": {"Aligent\\Composer\\Magento":"src/"}
   },
   "extra": {
-    "composer-command-registry": "Aligent\\Composer\\Magento\\Command\\ManualDeployCommand"
+    "composer-command-registry": [ "Aligent\\Composer\\Magento\\Command\\ManualDeployCommand" ]
   }
 }
